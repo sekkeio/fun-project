@@ -1,0 +1,49 @@
+.gallery { /* Исправлено на .gallery */
+    position: relative;
+    width: 100%;
+    opacity: 0;
+}
+
+.gallery.is_ready {
+    opacity: 1;
+}
+
+.gallery-item {
+    box-sizing: border-box;
+    padding: 10px;
+    float: left;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.grid_sizer {
+    float: left;
+}
+
+.filters {
+    margin-bottom: 20px;
+}
+
+.filters button {
+    padding: 8px 16px;
+    margin: 0 5px;
+    cursor: pointer;
+    background: #f0f0f0;
+    border: none;
+    border-radius: 4px;
+}
+
+.filters button.active {
+    background: #666;
+    color: white;
+}
+
+.gallery-item.isotope-hidden {
+    opacity: 0;
+}

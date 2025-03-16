@@ -1,11 +1,25 @@
 {
-    "name": "fake-api",
-    "version": "1.0.0",
-    "main": "server.js",
-    "scripts": {
-        "start": "node server.js"
-    },
-    "dependencies": {
-        "express": "^4.18.2"
-    }
+  "name": "gallery-project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "fetch": "node fetchNotionGalleryData.js",
+    "build": "npm run fetch-data && npx @11ty/eleventy",
+    "clearDist": "rm -rf dist",
+    "dev": "npx @11ty/eleventy --serve"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "type": "module",
+  "dependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "@11ty/eleventy-img": "^6.0.1",
+    "@fancyapps/fancybox": "^3.5.7",
+    "@notionhq/client": "^2.3.0",
+    "fs-extra": "^11.3.0",
+    "isotope-layout": "^3.0.6",
+    "node-fetch": "^3.3.2"
+  }
 }

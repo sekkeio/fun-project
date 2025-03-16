@@ -1,0 +1,12 @@
+<div class="filters">
+    <button data-filter="*">Все</button>
+    {% set allCategories = [] %}
+    {% for item in collections.processedGallery %}
+        {% for cat in item.category %}
+            {% if cat not in allCategories %}
+                {% set _ = allCategories.push(cat) %}
+                <button data-filter=".{{ cat | lower }}">{{ cat }}</button>
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+</div>

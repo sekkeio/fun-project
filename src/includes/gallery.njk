@@ -1,0 +1,31 @@
+{% include "filters.njk" %}
+
+<div class="gallery">
+    <div class="grid_sizer"></div>
+    {% if collections.processedGallery.length %}
+        {% for item in collections.processedGallery %}
+            <div class="gallery-item emerge
+                 {% for cat in item.category %}
+                     {{ cat | lower }}
+                 {% endfor %}"
+                 data-effect="relax"
+                 data-origin="bottom"
+                 data-expose="true">
+                <a href="{{ item.url }}" 
+                   data-fancybox="gallery" 
+                   data-caption="{{ item.alt }}">
+                    <picture>
+                        <source type="image/webp" data-srcset="{{ item.srcsetWebp }}">
+                        <img 
+                            class="lazyload blur-up"
+                            src="{{ item.lowestSrc }}" 
+                            data-src="{{ item.lowestSrc }}" 
+                            alt="{{ item.alt }}">
+                    </picture>
+                </a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>[DEBUG] Коллекция processedGallery пуста или не определена.</p>
+    {% endif %}
+</div>
