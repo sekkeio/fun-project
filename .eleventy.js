@@ -47,19 +47,19 @@ export default async function(eleventyConfig) {
       processedGallery.push({
         filename: filename,
         alt: item.properties.Name.title[0]?.plain_text || "Image",
-        category: item.properties.Category?.multi_select.map(cat => cat.name) || [],
+        category: item.properties.Category?.multi_select?.find(cat => cat.name)?.name || 'no', // надо join(', ') и разделить фильтры и данные
         url: metadata.webp[metadata.webp.length - 1].url,
         srcsetWebp: metadata.webp.map(img => `${img.url} ${img.width}w`).join(", "),
         srcsetJpeg: metadata.jpeg.map(img => `${img.url} ${img.width}w`).join(", "),
         lowestSrc: metadata.jpeg[0].url
       });
     }
-    
+
     console.log("[DEBUG] Коллекция processedGallery:", JSON.stringify(processedGallery, null, 2));
     if (processedGallery.length === 0) {
       console.warn("[WARN] Коллекция processedGallery пуста.");
     }
-    
+
     return processedGallery;
   });
 

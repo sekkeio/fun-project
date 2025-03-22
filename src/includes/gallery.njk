@@ -3,28 +3,31 @@
 <div class="gallery">
     <div class="grid_sizer"></div>
     {% if collections.processedGallery.length %}
+      {% for i in range(1, 21) %}
         {% for item in collections.processedGallery %}
-            <div class="gallery-item emerge
-                 {% for cat in item.category %}
-                     {{ cat | lower }}
-                 {% endfor %}"
+            <div class="gallery__item emerge"
+                {% if item.category %}
+                  data-category="{{ item.category }}"
+                {% endif %}
                  data-effect="relax"
                  data-origin="bottom"
                  data-expose="true">
-                <a href="{{ item.url }}" 
-                   data-fancybox="gallery" 
+                <a href="{{ item.url }}"
+                   data-fancybox="gallery"
                    data-caption="{{ item.alt }}">
                     <picture>
                         <source type="image/webp" data-srcset="{{ item.srcsetWebp }}">
-                        <img 
+                        <img
                             class="lazyload blur-up"
-                            src="{{ item.lowestSrc }}" 
-                            data-src="{{ item.lowestSrc }}" 
+                            src="{{ item.lowestSrc }}"
+                            data-src="{{ item.lowestSrc }}"
                             alt="{{ item.alt }}">
                     </picture>
                 </a>
             </div>
         {% endfor %}
+      {% endfor %}
+
     {% else %}
         <p>[DEBUG] Коллекция processedGallery пуста или не определена.</p>
     {% endif %}

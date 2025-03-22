@@ -1,33 +1,26 @@
-.gallery { /* Исправлено на .gallery */
-    position: relative;
-    width: 100%;
-    opacity: 0;
+.gallery {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
 }
 
 .gallery.is_ready {
-    opacity: 1;
+  opacity: 1;
 }
 
-.gallery-item {
-    box-sizing: border-box;
-    padding: 10px;
-    float: left;
-    opacity: 0;
-    transition: opacity 0.4s ease;
+.gallery__item {
+  box-sizing: border-box;
+  padding: 20px;
+
 }
 
-.gallery-item img {
-    width: 100%;
-    height: auto;
-    display: block;
+.gallery__item img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
-.grid_sizer {
-    float: left;
-}
-
-.filters {
-    margin-bottom: 20px;
+.gallery__item.hidden {
+  display: none;
 }
 
 .filters button {
